@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/*
+  DESIGN TOKEN SYSTEM — "Control Room"
+  ------------------------------------
+  Concept: the platform is a mission-control panel for interview
+  performance — dark, instrumented, calm-but-alert. Signal (violet)
+  is "the AI is thinking", Pulse (mint) is "you're doing well / live",
+  Ember (coral) is "needs attention".
+*/
+@theme {
+  /* Surfaces */
+  --color-void: #0a0b0f;
+  --color-ink: #121319;
+  --color-ink-2: #1a1c25;
+  --color-line: #262936;
+
+  /* Text */
+  --color-bone: #eef0f5;
+  --color-mist: #8b92a8;
+  --color-fog: #565c70;
+
+  /* Accents */
+  --color-signal: #6c5ce7;
+  --color-signal-2: #8b7cf6;
+  --color-pulse: #00e5a0;
+  --color-pulse-2: #00c98c;
+  --color-ember: #ff5d72;
+  --color-amber: #ffb454;
+
+  /* Fonts */
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Radii */
+  --radius-card: 1.25rem;
+}
+
+@layer base {
+  * { border-color: var(--color-line); }
+  html { color-scheme: dark; scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-void);
+    color: var(--color-bone);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(108,92,231,0.10), transparent 45%),
+      radial-gradient(circle at 85% 20%, rgba(0,229,160,0.06), transparent 40%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  ::selection { background: var(--color-signal); color: white; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--color-line); border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-fog); }
+  :focus-visible { outline: 2px solid var(--color-signal-2); outline-offset: 2px; border-radius: 4px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(18, 19, 25, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--color-line);
+  }
+  .text-gradient-signal {
+    background: linear-gradient(90deg, var(--color-bone), var(--color-signal-2) 60%, var(--color-pulse));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
