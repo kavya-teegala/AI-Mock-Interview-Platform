@@ -33,42 +33,21 @@ export const interviewService = {
   // Evaluate user answer
   evaluateAnswer: (payload) =>
     axiosInstance.post(
-      '/ai/evaluate',
+      '/ai/evaluate-answer',
       payload
-    ),
-
-  // Generate follow-up question
-  generateFollowUp: (payload) =>
-    axiosInstance.post(
-      '/ai/follow-up',
-      payload
-    ),
-
-  // Get interview history
-  getHistory: () =>
-    axiosInstance.get('/ai/history'),
-
-  getInterviewHistory: () =>
-  axiosInstance.get("/interview/history"),
-
-  saveSession: (data) =>
-  axiosInstance.post('/interview/save-session', data),
-
-  // Update interview score
-  updateScore: (
-    interviewId,
-    score
-  ) =>
-    axiosInstance.patch(
-      `/ai/interview/${interviewId}/score`,
-      { score }
     ),
 
   // Save full interview session
   saveSession: (payload) =>
     axiosInstance.post(
-      '/ai/save-session',
+      '/interview/save-session',
       payload
+    ),
+
+  // Get interview history
+  getInterviewHistory: () =>
+    axiosInstance.get(
+      '/interview/history'
     ),
 }
 
