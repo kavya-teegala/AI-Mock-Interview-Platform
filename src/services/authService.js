@@ -23,32 +23,36 @@ export const authService = {
 // ==============================
 
 export const interviewService = {
+  // GENERATE QUESTIONS
   generateQuestions: (payload) =>
     axiosInstance.post(
       '/ai/generate-questions',
       payload
     ),
 
+  // EVALUATE ANSWER
   evaluateAnswer: (payload) =>
     axiosInstance.post(
-      '/ai/evaluate-answer',
+      '/ai/evaluate',
       payload
     ),
 
+  // SAVE SESSION
   saveSession: (payload) =>
     axiosInstance.post(
-      '/interview/save-session',
+      '/ai/save-session',
       payload
     ),
 
+  // HISTORY
   getHistory: () =>
     axiosInstance.get(
-      '/interview/history'
+      '/ai/history'
     ),
 
   getInterviewHistory: () =>
     axiosInstance.get(
-      '/interview/history'
+      '/ai/history'
     ),
 }
 
